@@ -3,6 +3,7 @@ class StudentsGrades:
     def __init__(self, scores):
         self.scores = scores
 
+
     def get_by_index(self, index):
         return self.scores[index]
 
@@ -45,6 +46,31 @@ class StudentsGrades:
                     scores[y], scores[y + 1] = scores[y + 1], scores[y]
         return scores
 
+    def average(self):
+        return sum(self.scores) / len(self.scores)
+
+    def best(self):
+        sorted = self.get_sorted()
+        return sorted[-1]
+
+    def worst(self):
+        sorted = self.get_sorted()
+        return sorted[0]
+
+    def pass_rate(self):
+        if self.count() == 0:
+            return 0.0
+        passed = 0
+        for i in self.scores:
+            if i >= 50:
+                passed += 1
+        return passed / self.count()
+
+    def __str__(self):
+
+        return f"StudentsGrades: {self.count()} studentů, průměr {self.average():.1f}"
+
+
 def main():
     results = StudentsGrades([85, 42, 91, 67, 50, 73, 100, 38, 58])
 
@@ -75,12 +101,18 @@ def main():
     print(random_results.count())
     print(random_results.get_sorted())
 
+    print("bonus uloha 1:\n")
+    print(results)
+    print(results.best())
+    print(results.worst())
+    print(f"{results.pass_rate() * 100:.1f}%")
+
 
 
 
 if __name__ == "__main__":
     main()
-print("skuska prvotnej funkcie:")
+print("skuska prvotnej funkcie:\n")
 results = StudentsGrades([85, 42, 91, 67, 50, 73, 100, 38, 58])
 
 print(results.count())          # 9
