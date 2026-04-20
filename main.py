@@ -1,6 +1,13 @@
-def main():
-    print("Hello from exercise11!")
-skuska
+# selection sort
+import random
 
-if __name__ == "__main__":
-    main()
+def random_numbers(count, low=0, high=100):
+    return [random.randint(low, high) for _ in range(count)]
+
+values = random_numbers(10)
+print(values)
+print(sorted(values))
+
+
+
+
