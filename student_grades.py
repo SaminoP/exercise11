@@ -2,7 +2,27 @@ from sorting import random_numbers
 class StudentsGrades:
     def __init__(self, scores):
         self.scores = scores
+        self._sorted_scores = None
 
+    # bonusova uloha 2:
+    def find_sorted(self, score):
+        if self._sorted_scores is None:
+            print("sorting_")
+            self._sorted_scores = self.get_sorted()
+        malo = 0
+        vela = len(self._sorted_scores) - 1
+
+        while malo <= vela:
+            stred = (malo + vela) // 2
+
+            if self._sorted_scores[stred] == score:
+                return stred
+            elif self._sorted_scores[stred] < score:
+                malo = stred + 1
+            else:
+                vela = stred - 1
+
+        return None
 
     def get_by_index(self, index):
         return self.scores[index]
@@ -45,7 +65,7 @@ class StudentsGrades:
                 if scores[y] > scores[y + 1]:
                     scores[y], scores[y + 1] = scores[y + 1], scores[y]
         return scores
-
+# bonusova uloha 1:
     def average(self):
         return sum(self.scores) / len(self.scores)
 
@@ -107,6 +127,11 @@ def main():
     print(results.worst())
     print(f"{results.pass_rate() * 100:.1f}%")
 
+    print("bonus uloha 2:\n")
+    print(results.find_sorted(91))
+    print(results.find_sorted(50))
+    print(results.find_sorted(77))
+
 
 
 
@@ -118,3 +143,8 @@ results = StudentsGrades([85, 42, 91, 67, 50, 73, 100, 38, 58])
 print(results.count())          # 9
 print(results.get_by_index(2))  # 91
 print(results.scores)           # [85, 42, 91, 67, 50, 73, 100, 38, 58]
+
+
+
+
+
