@@ -1,5 +1,5 @@
 import random
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 
 def random_numbers(count, low=0, high=100):
     return [random.randint(low, high) for _ in range(count)]
@@ -42,30 +42,30 @@ def bubble_sort(zoznam):
     cisla = zoznam.copy()
     x = len(cisla)
 
-    plt.ion()
-    plt.show()
+    # plt.ion()
+    # plt.show()
 
     for i in range(x):
         for y in range(0, x - i - 1):
 
-            index_highlight1 = y
-            index_highlight2 = y + 1
-
-            colors = ["steelblue"] * len(cisla)
-            colors[index_highlight1] = "tomato"
-            colors[index_highlight2] = "tomato"
-
-            plt.clf()  # Vymaže predchádzajúci snímok
-            plt.bar(range(len(cisla)), cisla, color=colors)
-            plt.title("Bubble Sort - Vizualizácia")
-            plt.pause(0.1)
+            # index_highlight1 = y
+            # index_highlight2 = y + 1
+            #
+            # colors = ["steelblue"] * len(cisla)
+            # colors[index_highlight1] = "tomato"
+            # colors[index_highlight2] = "tomato"
+            #
+            # plt.clf()  # Vymaže predchádzajúci snímok
+            # plt.bar(range(len(cisla)), cisla, color=colors)
+            # plt.title("Bubble Sort - Vizualizácia")
+            # plt.pause(0.1)
 
 
             if cisla[y] > cisla[y + 1]:
                 cisla[y], cisla[y + 1] = cisla[y + 1], cisla[y]
 
-        plt.ioff()
-        plt.show()
+        # plt.ioff()
+        # plt.show()
 
     return cisla
 
